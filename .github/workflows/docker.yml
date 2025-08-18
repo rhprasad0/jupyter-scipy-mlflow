@@ -73,7 +73,7 @@ jobs:
       - name: Run tests ✅
         run: python3 -m pytest tests
         env:
-          TEST_IMAGE: "my-project/ryan-jupyter-scipy-mlflow"
+          TEST_IMAGE: "rhprasad/ryan-jupyter-scipy-mlflow"
 
       - name: Login to Docker Hub 🔐
         if: github.ref == 'refs/heads/main' || github.event_name == 'schedule'
