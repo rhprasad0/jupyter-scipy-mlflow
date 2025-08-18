@@ -84,4 +84,4 @@ jobs:
 
       - name: Push Image to Docker Hub 📤
         if: github.ref == 'refs/heads/main' || github.event_name == 'schedule'
-        run: docker push --all-tags ${{ env.OWNER }}/${{ env.IMAGE_NAME }}:${{steps.get_sha.outputs.sha12}}
+        run: docker push --all-tags ${{ env.OWNER }}/${{ env.IMAGE_NAME }}
