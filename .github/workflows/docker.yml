@@ -73,15 +73,15 @@ jobs:
       - name: Run tests ✅
         run: python3 -m pytest tests
         env:
-          TEST_IMAGE: "${{ env.OWNER }}/${{ env.IMAGE_NAME }}:${{steps.get_sha.outputs.sha12}}"
+          TEST_IMAGE: "${{ env.OWNER }}/${{ env.IMAGE_NAME }}:${{steps.get_sha.outputs.sha12}}" # point this at the image we just built
 
       - name: Login to Docker Hub 🔐
         if: github.ref == 'refs/heads/main' || github.event_name == 'schedule'
         uses: docker/login-action@184bdaa0721073962dff0199f1fb9940f07167d1 # v3.5.0
         with:
-          username: ${{ env.OWNER }}
+          username: rhprasad
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Push Image to Docker Hub 📤
         if: github.ref == 'refs/heads/main' || github.event_name == 'schedule'
-        run: docker push --all-tags ${{ env.OWNER }}/${{ env.IMAGE_NAME }}
+        run: docker push --all-tags rhprasad/jupyter-scipy-mlflow
